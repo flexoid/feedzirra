@@ -1,3 +1,5 @@
+require_relative 'media_rss_elements'
+
 module Feedzirra
 
   module Parser
@@ -5,7 +7,8 @@ module Feedzirra
     class AtomEntry
       include SAXMachine
       include FeedEntryUtilities
-      
+      include MediaRSSElements
+
       element :title
       element :link, :as => :url, :value => :href, :with => {:type => "text/html", :rel => "alternate"}
       element :name, :as => :author
